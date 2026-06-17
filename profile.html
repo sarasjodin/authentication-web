@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home | My Authentication Lab</title>
+    <title>Profile | My Authentication Lab</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="assets/styles/styles.css" />
   </head>
@@ -18,21 +18,25 @@
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
           <!-- Menu link to protected page -->
-          <!-- No user information and protected content here -->
+          <!-- Displaying user information and protected content here -->
           <li><a class="active" href="profile.html">My profile page</a></li>
         </ul>
       </nav>
       <div class="auth-links">
         <!-- Create account form -->
+        <!-- Create account form disabled after successful login -->
         <a href="create-account.html" id="register-link"> Create Account </a>
 
         <!-- Login form -->
+        <!-- Login form disabled after successful login -->
         <a href="login.html" id="login-link"> Login </a>
 
         <button id="logout-btn" hidden>Logout</button>
       </div>
     </header>
-    <h2>Welcome</h2>
+
+    <h2>My Profile page</h2>
+
     <!-- Navigation and global site scripts -->
     <script src="assets/js/menu.js" defer></script>
 
