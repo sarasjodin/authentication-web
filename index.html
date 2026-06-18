@@ -13,13 +13,15 @@
       <div class="container">
         <div class="logo-container">
           <a href="index.html" class="brand-link" aria-label="Go to homepage">
-            <img src="assets/images/logo.svg" alt="" class="logo" height="20" />
+            <img src="assets/images/logo.svg" alt="" class="logo" height="40" />
 
-            <span class="site-name"> My Full-stack Authentication Lab </span>
+            <span class="site-name">My Authentication Lab</span>
           </a>
         </div>
         <nav>
-          <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
+          <button class="hamburger" aria-label="Toggle menu" hidden>
+            &#9776;
+          </button>
           <ul class="nav-links">
             <li><a class="active" href="index.html" hidden>Home</a></li>
             <!-- Menu link to protected page -->
@@ -66,10 +68,17 @@
         <section>
           <h2>Secure authentication</h2>
 
-          <img
-            src="assets/images/authentication.png"
-            alt="Illustration of secure user authentication and access control"
-          />
+          <figure>
+            <img
+              src="assets/images/authentication-authorization.png"
+              alt="Illustration of secure user authentication and access control"
+              class="illustration"
+            />
+
+            <div class="ai-badge">
+              <span class="ai">AI</span><span class="generated">GENERATED</span>
+            </div>
+          </figure>
 
           <p>
             User accounts are protected with JWT authentication and secure
@@ -81,7 +90,12 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div class="footer-cell">
-          <h2>Authentication Lab</h2>
+          <div class="footer-heading">
+            <a href="index.html" class="brand-link" aria-label="Go to homepage">
+              <img src="assets/images/logo.svg" alt="" class="logo" height="40"
+            /></a>
+            <h2>Authentication Lab</h2>
+          </div>
           <p>
             Demonstration of user registration, login, JWT authentication,
             password hashing and protected resources.
@@ -133,9 +147,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>
-          &copy; 2026 My Full-stack Authentication Lab. All rights reserved.
-        </p>
+        <p>&copy; 2026 My Authentication Lab. All rights reserved.</p>
         <p class="back-to-top">
           <a href="#top">Back to top ↑</a>
         </p>
