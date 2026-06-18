@@ -23,20 +23,19 @@
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <!-- Menu link to protected page -->
-            <!-- Displaying user information and protected content here -->
             <li><a class="active" href="profile.html">My profile page</a></li>
           </ul>
         </nav>
         <div class="auth-links">
-          <!-- Create account form -->
-          <!-- Create account form disabled after successful login -->
-          <a href="create-account.html" id="register-link"> Create Account </a>
+          <!-- Create account -->
+          <a href="create-account.html" id="register-link" hidden>
+            Create Account
+          </a>
 
-          <!-- Login form -->
-          <!-- Login form disabled after successful login -->
-          <a href="login.html" id="login-link"> Login </a>
+          <!-- Login/logout -->
+          <a href="login.html" id="login-link" hidden> Login </a>
 
-          <button id="logout-btn" hidden>Logout</button>
+          <button id="logout-btn">Logout</button> 
         </div>
       </header>
       <main>
@@ -49,6 +48,24 @@
             information. Users who are not authenticated cannot access this
             page.
           </p>
+        </section>
+        <section class="profile-card">
+          <h2>User Information</h2>
+
+          <dl>
+            <dt>Username</dt>
+            <dd id="username"></dd>
+
+            <dt>Email</dt>
+            <dd id="email"></dd>
+
+            <dt>Account ID</dt>
+            <dd id="user-id"></dd>
+          </dl>
+        </section>
+        <section class="profile-actions">
+          <h3>Account Actions</h3>
+          <a href="change-password.html" class="btn"> Change Password </a>
         </section>
       </main>
       <footer>
@@ -63,7 +80,7 @@
       <script src="assets/js/menu.js" defer></script>
 
       <!-- Page-specific logic -->
-      <script type="module" src="assets/js/index.js"></script>
+      <script type="module" src="assets/js/profile.js"></script>
     </div>
   </body>
 </html>
