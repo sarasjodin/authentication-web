@@ -23,17 +23,6 @@ figure {
   margin: 0;
 }
 
-/* .ai-badge {
-  padding: 0.25rem 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 999px;
-  font-size: 0.875rem;
-  background: white;
-  display: inline-flex;
-
-  gap: 0.35rem;
-} */
-
 .ai-badge {
   position: absolute;
   left: 0.75rem;
@@ -60,6 +49,7 @@ figure {
   color: #797979;
 }
 
+.form-heading .heading-icon,
 .logo {
   display: block;
   border: none;
@@ -250,6 +240,18 @@ fieldset {
   display: grid;
   gap: 0.4rem;
   margin-bottom: 1rem;
+}
+
+.form-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heading-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
 }
 
 label {
