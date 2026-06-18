@@ -31,24 +31,38 @@ nav {
 }
 
 .nav-links {
+  display: flex;
   list-style: none;
+  gap: 1rem;
+}
+
+.auth-links {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 #register-link,
 #login-link,
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-}
+#logout-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 
-#register-link,
-#login-link {
+  background: white;
+  color: black;
+
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer;
   margin-left: 1rem;
   padding: 0.5rem 1rem;
-  border: 1px solid #fff;
-  border-radius: 4px;
+}
+
+#register-link:hover,
+#login-link:hover,
+#logout-btn:hover {
+  background: #eeeeee;
 }
 
 .nav-links li a.active {
