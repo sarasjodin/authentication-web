@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="assets/styles/styles.css" />
   </head>
   <body id="top">
-    <div class="site-wrapper">
-      <a class="skip-link" href="#main-content">Skip to main content</a>
-      <header class="navbar">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header navbar">
+      <div class="container">
         <div class="logo-container">
           <a href="index.html" class="brand-link" aria-label="Go to homepage">
             <img src="assets/images/logo.svg" alt="" class="logo" height="20" />
@@ -21,7 +21,7 @@
         <nav>
           <button class="hamburger" aria-label="Toggle menu">&#9776;</button>
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" hidden>Home</a></li>
             <!-- Menu link to protected page -->
             <li>
               <a class="active" href="profile.html" hidden>My profile page</a>
@@ -39,12 +39,14 @@
 
           <button id="logout-btn" hidden>Logout</button>
         </div>
-      </header>
+      </div>
+    </header>
 
-      <main>
-        <h1>Create Account page</h1>
+    <main class="site-main" id="main-content" tabindex="-1">
+      <div class="container content-layout">
+        <h1><span class="highlight">Create Account</span> page</h1>
         <section>
-          <h2>About this page</h2>
+          <h2>About</h2>
           <p>
             This page allows users to create a new account. The form sends user
             information to the API and stores the account in the database.
@@ -62,26 +64,126 @@
           </p>
         </section>
         <section>
+          <h2>Register a new account</h2>
+          <form id="register-form">
+            <fieldset>
+              <legend class="visually-hidden">Create Account</legend>
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  autocomplete="username"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  autocomplete="new-password"
+                  required
+                />
+              </div>
+
+              <button class="form-button" type="submit">Create Account</button>
+
+              <p id="register-message" aria-live="polite"></p>
+            </fieldset>
+          </form>
+        </section>
+
+        <section>
           <h2>Already have an account?</h2>
           <p>
             <a href="login.html">Login</a> to access your account and protected
             resources.
           </p>
         </section>
-      </main>
-      <footer>
+      </div>
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-cell">
+          <h2>Authentication Lab</h2>
+          <p>
+            Demonstration of user registration, login, JWT authentication,
+            password hashing and protected resources.
+          </p>
+        </div>
+
+        <div class="footer-cell">
+          <h2>Architecture</h2>
+
+          <ul>
+            <li>Frontend: Netlify</li>
+            <li>Backend API: My own VPS</li>
+            <li>Separate Domains</li>
+            <li>JWT-secured Requests</li>
+          </ul>
+        </div>
+
+        <div class="footer-cell">
+          <h2>Tech stack</h2>
+          <ul>
+            <li>HTML, CSS & JavaScript</li>
+            <li>Express & SQLite</li>
+            <li>JWT Authentication & bcrypt</li>
+            <li>REST API</li>
+          </ul>
+        </div>
+
+        <div class="footer-cell">
+          <h2>About the Developer</h2>
+          <p>Full-stack Developer</p>
+          <p>Interested in modern web applications</p>
+        </div>
+
+        <div class="footer-cell">
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="#">GitHub Repository</a></li>
+            <li><a href="#">API Documentation</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-cell">
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Portfolio</a></li>
+            <li><a href="#">Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
         <p>
           &copy; 2026 My Full-stack Authentication Lab. All rights reserved.
         </p>
         <p class="back-to-top">
           <a href="#top">Back to top ↑</a>
         </p>
-      </footer>
-      <!-- Navigation and global site scripts -->
-      <script src="assets/js/menu.js" defer></script>
+      </div>
+    </footer>
+    <!-- Navigation and global site scripts -->
+    <script src="assets/js/menu.js" defer></script>
 
-      <!-- Page-specific logic -->
-      <script type="module" src="assets/js/create-account.js"></script>
-    </div>
+    <!-- Page-specific logic -->
+    <script type="module" src="assets/js/create-account.js"></script>
   </body>
 </html>
