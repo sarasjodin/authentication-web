@@ -4,7 +4,6 @@ export function setupMenu() {
   const logoutBtn = document.querySelector('#logout-btn');
 
   if (hamburger && navMenu) {
-    console.log(hamburger, navMenu);
     hamburger.addEventListener('click', () => {
       const isOpen = navMenu.classList.toggle('is-open');
 
