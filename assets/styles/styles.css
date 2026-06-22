@@ -62,6 +62,11 @@ figure {
   border: none;
 }
 
+.site-nav {
+  position: relative;
+  margin-left: auto;
+}
+
 .brand-link {
   display: flex;
   align-items: center;
@@ -111,7 +116,6 @@ input {
   border: 0;
 }
 
-/* Layout - mobile first */
 .site-header,
 .site-footer {
   width: 100%;
@@ -166,7 +170,6 @@ input {
 .footer-heading h2 {
   margin: 0;
 }
-
 .back-to-top {
   margin-top: 1rem;
   align-self: flex-end;
@@ -183,8 +186,6 @@ header .container {
   display: flex;
   padding-inline: 0;
 }
-
-/* Komponenter */
 
 header {
   color: #fff;
@@ -204,12 +205,12 @@ header {
   white-space: nowrap;
 }
 
-.site-name-desktop {
-  display: none;
-}
-
 .site-name-mobile {
   display: inline;
+}
+
+.site-name-desktop {
+  display: none;
 }
 
 .nav-menu {
@@ -332,7 +333,6 @@ header {
   grid-column: 1 / -1;
 }
 
-/* Forms */
 form {
   max-width: 420px;
 }
@@ -387,6 +387,18 @@ input {
 .skip-link {
   position: absolute;
   left: -9999px;
+}
+
+/* States */
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+
+  padding: 0.75rem 1rem;
+  background: white;
+  border: 2px solid black;
 }
 
 .nav-links a {
@@ -462,10 +474,6 @@ input {
 .brand-link:hover,
 .brand-link.active {
   color: #1d4d90;
-}
-
-.site-header .container {
-  gap: 1rem;
 }
 
 @media (min-width: 365px) {
