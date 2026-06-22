@@ -3,6 +3,12 @@
   box-sizing: border-box;
 }
 
+:root {
+  --accent: #f97316;
+  --accent-light: #fff3e6;
+  --accent-dark: #b45309;
+}
+
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -49,6 +55,7 @@ figure {
   color: #797979;
 }
 
+.icon,
 .form-heading .heading-icon,
 .logo {
   display: block;
@@ -61,6 +68,30 @@ figure {
   gap: 0.75rem;
   text-decoration: none;
   color: #2766bc;
+}
+
+.contact-links > ul {
+  padding: 0;
+}
+
+.contact-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-links a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-links li + li {
+  margin-top: 0.75rem;
+}
+
+.footer-description {
+  margin: 0;
 }
 
 button,
@@ -121,6 +152,10 @@ input {
   border-radius: 0.5rem;
 }
 
+.footer-cell ul:not(.contact-links) {
+  padding-left: 1rem;
+}
+
 .footer-heading {
   display: flex;
   align-items: center;
@@ -131,6 +166,7 @@ input {
 .footer-heading h2 {
   margin: 0;
 }
+
 .back-to-top {
   margin-top: 1rem;
   align-self: flex-end;
@@ -162,51 +198,123 @@ header {
   align-items: center;
 }
 
-.logo {
-  margin-right: 0.5rem;
-}
-
 .site-name {
-  font-size: clamp(1rem, 4vw, 2.5rem);
+  font-size: clamp(1.25rem, 4vw, 2rem);
   font-weight: bold;
+  white-space: nowrap;
 }
 
-nav {
-  flex: 1;
-  display: flex;
-  align-items: center;
+.site-name-desktop {
+  display: none;
+}
+
+.site-name-mobile {
+  display: inline;
+}
+
+.nav-menu {
+  display: none;
+}
+
+.nav-menu.is-open {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 1000;
+
+  display: grid;
+  gap: 1rem;
+
+  min-width: 260px;
+  padding: 1rem;
+
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 15%);
 }
 
 .nav-links {
-  display: flex;
   list-style: none;
-  gap: 1rem;
+  padding: 0;
+  margin: 0;
 }
 
+.nav-links,
 .auth-links {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  display: grid;
+  gap: 0.5rem;
 }
 
-#register-link,
-#login-link,
-#logout-btn {
-  padding: 0.5rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.action-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
 
   background: white;
-  color: black;
+  color: #222;
 
   text-decoration: none;
   font: inherit;
   cursor: pointer;
-  margin-left: 1rem;
-  padding: 0.5rem 1rem;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.profile-page.hamburger {
+.action-button:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.action-button--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.action-button--primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+
+.auth-links {
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.profile-page .home-link {
+  display: inline-flex;
+}
+
+.profile-link,
+#logout-btn {
+  display: none;
+}
+
+.is-logged-in .profile-link,
+.is-logged-in #logout-btn {
+  display: inline-flex;
+}
+
+.is-logged-in #register-link,
+.is-logged-in #login-link {
+  display: none;
+}
+
+#register-link,
+#login-link {
+  display: inline-flex;
+}
+
+.hamburger {
   display: block;
   cursor: pointer;
 }
@@ -281,26 +389,74 @@ input {
   left: -9999px;
 }
 
-/* States */
+.nav-links a {
+  display: block;
+  padding: 0.6rem 0.75rem;
+  color: #4f4f4f;
+  text-decoration: none;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+}
 
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  z-index: 1000;
+.nav-links a:hover,
+.nav-links a[aria-current='page'] {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+}
 
-  padding: 0.75rem 1rem;
+/* Auth buttons in header/menu */
+.auth-links .action-button {
   background: white;
-  border: 2px solid black;
+  color: #222;
+  border-color: #ddd;
 }
 
-#register-link:hover,
-#login-link:hover,
+/* Create Account subtle emphasis not primary */
+.auth-links .action-button--emphasis {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+/* Hover only for non-active auth buttons */
+.auth-links .action-button:not([aria-current='page']):hover,
 #logout-btn:hover {
-  background: #eeeeee;
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent-dark);
 }
 
-.nav-links li a.active {
-  font-weight: bold;
+/* Active auth page */
+.auth-links .action-button[aria-current='page'] {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  border-color: transparent;
+  font-weight: 700;
+}
+
+/* No visual change when hovering active auth page */
+.auth-links .action-button[aria-current='page']:hover {
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  border-color: transparent;
+}
+
+.site-main a,
+.site-footer a {
+  color: var(--accent-dark);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.15em;
+  transition: color 0.2s ease;
+}
+
+.site-main a:hover,
+.site-footer a:hover {
+  color: var(--accent);
+}
+
+#register-link,
+#login-link {
+  margin-left: 0;
 }
 
 .brand-link:hover,
@@ -308,13 +464,27 @@ input {
   color: #1d4d90;
 }
 
+.site-header .container {
+  gap: 1rem;
+}
+
+@media (min-width: 365px) {
+  .site-name-mobile {
+    display: none;
+  }
+
+  .site-name-desktop {
+    display: inline;
+  }
+
+  .site-header .container {
+    gap: 1rem;
+  }
+}
+
 @media (min-width: 768px) {
   .site-header {
     min-height: 120px;
-  }
-
-  .hamburger {
-    display: none;
   }
 
   .footer-grid {
@@ -338,6 +508,40 @@ input {
     gap: 2rem;
     margin-inline: auto;
     padding-inline: 1rem;
+  }
+}
+
+@media (min-width: 925px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-menu {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    min-width: auto;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .nav-links,
+  .auth-links {
+    display: flex;
+    align-items: center;
+  }
+
+  .auth-links {
+    border-top: none;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .site-name {
+    font-size: clamp(1rem, 3vw, 2.5rem);
   }
 }
 
