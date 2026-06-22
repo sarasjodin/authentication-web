@@ -29,7 +29,7 @@ loginForm.addEventListener('submit', async (event) => {
       return;
     }
 
-    localStorage.setItem('token', data.responseData.token);
+    localStorage.setItem('token', data.token);
     window.location.href = 'profile.html'; // redirect to profile page after login
   } catch (error) {
     console.error('Login error:', error);
