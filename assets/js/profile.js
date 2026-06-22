@@ -50,5 +50,6 @@ async function getProfile() {
   } catch (error) {
     console.error('Profile error:', error);
     profileMessage.textContent = 'Could not connect to the server'; // Else error message
+    profileData.innerHTML = '';
   }
 }
