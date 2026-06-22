@@ -7,7 +7,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" href="assets/styles/styles.css" />
   </head>
-  <body id="top">
+  <body id="top" class="apidoc-page">
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header navbar">
       <div class="container">
@@ -75,25 +75,84 @@
           </p>
         </section>
 
-        <section>
-          <h2></h2>
+        <section aria-labelledby="registration-heading">
+          <h2 id="registration-heading">User Registration</h2>
+
+          <p>
+            A new user account is created by sending a JSON request body to the
+            registration endpoint.
+          </p>
 
           <figure>
             <img
-              src="assets/images/authentication-authorization.png"
-              alt="Illustration of secure user authentication and access control"
-              class="illustration"
+              src="assets/images/register-request-body.png"
+              alt="Example JSON request body with username, email, and password."
+              height="135"
+              width="278"
             />
-
-            <div class="ai-badge">
-              <span class="ai">AI</span><span class="generated">GENERATED</span>
-            </div>
+            <figcaption>
+              Figure 1. Example request body for user registration.
+            </figcaption>
           </figure>
+        </section>
+
+        <section aria-labelledby="database-record-heading">
+          <h2 id="database-record-heading">Stored User Data</h2>
 
           <p>
-            User accounts are protected with JWT authentication and secure
-            access control.
+            After registration, the password is hashed using bcrypt before being
+            stored in the database.
           </p>
+
+          <figure>
+            <img
+              src="assets/images/example-database-record.png"
+              alt="Example database record containing a hashed password."
+              height="180"
+              width="466"
+            />
+            <figcaption>
+              Figure 2. Example user record stored in the database.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section aria-labelledby="endpoints-heading">
+          <h2 id="endpoints-heading">API Endpoints</h2>
+
+          <p>
+            The authentication API exposes endpoints for registration, login,
+            health checks, and protected resources.
+          </p>
+
+          <figure>
+            <img
+              src="assets/images/api-endpoints-table.png"
+              alt="Table of API endpoints and descriptions."
+              height="180"
+              width="656"
+            />
+            <figcaption>Figure 3. Available API endpoints.</figcaption>
+          </figure>
+        </section>
+
+        <section aria-labelledby="schema-heading">
+          <h2 id="schema-heading">Database Schema</h2>
+
+          <p>
+            User accounts are stored in a SQLite database using the following
+            table structure.
+          </p>
+
+          <figure>
+            <img
+              src="assets/images/users-table-schema.png"
+              alt="SQLite users table schema."
+              height="220"
+              width="511"
+            />
+            <figcaption>Figure 4. SQLite users table schema.</figcaption>
+          </figure>
         </section>
       </div>
     </main>
