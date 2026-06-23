@@ -69,10 +69,12 @@
         <section>
           <h2>About</h2>
           <p>
-            This is a protected page that requires a valid JWT token. The page
-            requests data from a protected API endpoint and displays user
-            information. Users who are not authenticated cannot access this
-            page.
+            This page demonstrates access to a protected API endpoint and
+            displays user information.
+          </p>
+          <p>
+            The page itself is visible, but the protected user information is
+            only displayed when a valid JWT token is available.
           </p>
         </section>
         <section class="profile-card">
@@ -83,7 +85,7 @@
             aria-live="polite"
           ></p>
           <div id="profile-data">
-            <p><i>Loading...</i></p>
+            <p><i>Loading protected user data...</i></p>
           </div>
         </section>
         <section class="profile-actions">
