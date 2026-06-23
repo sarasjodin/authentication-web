@@ -17,7 +17,6 @@ body {
   color: #4f4f4f;
 }
 
-/* Gemensamma element */
 img {
   max-width: 100%;
   border-radius: 8px;
@@ -59,6 +58,13 @@ img.illustration {
   font-size: 0.75rem;
   font-weight: 700;
   color: #797979;
+}
+
+.screenshot img {
+  display: block;
+  max-width: 100%;
+  min-width: 300px;
+  height: auto;
 }
 
 .icon,
