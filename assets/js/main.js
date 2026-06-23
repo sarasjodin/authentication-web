@@ -1,6 +1,7 @@
 import { setupMenu } from './menu.js'; // Imports function that handles the hb menu and logout button
 
 const body = document.querySelector('body');
+const yearElement = document.querySelector('#current-year');
 
 async function checkAuth() {
   const token = localStorage.getItem('token'); // Checks local storage for token, if not found, user is logged out
@@ -23,6 +24,10 @@ function setLoggedIn() {
 function setLoggedOut() {
   body.classList.add('is-logged-out');
   body.classList.remove('is-logged-in');
+}
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
 }
 
 setupMenu();
