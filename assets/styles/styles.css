@@ -29,10 +29,16 @@ figure {
   margin: 0;
 }
 
+img.illustration {
+  width: 300px;
+  height: 214px;
+  display: block;
+}
+
 .ai-badge {
   position: absolute;
   left: 0.75rem;
-  bottom: 3.75rem;
+  bottom: 2rem;
   display: inline-flex;
   align-items: baseline;
   gap: 0.35rem;
