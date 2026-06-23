@@ -75,20 +75,30 @@
             overview of the project and links to the authentication features.
           </p>
           <p>
-            Create Account and Login buttons are only available when the user is
-            not logged in. After login, the user can access the protected
-            profile page instead.
+            Navigation options are updated automatically based on the user's
+            authentication status. Create Account and Login are available to
+            logged-out users, while authenticated users can access their profile
+            (user information) and log out.
           </p>
-          <p>
-            The My profile page and header link are only visible to
-            authenticated users. This makes it clear that the page is a
-            protected resource. Access to the page is also protected by JWT
-            authentication on the backend.
-          </p>
-          <p>
-            The page uses simple navigation and semantic HTML for better
-            accessibility.
-          </p>
+          <ul>
+            <li>
+              Protected user data is retrieved from a secured API endpoint and
+              requires a valid JWT token.
+            </li>
+            <li>
+              User passwords are securely hashed with bcrypt before being stored
+              in the SQLite database.
+            </li>
+            <li>
+              JWT tokens are signed using a securely generated secret key.
+              Stored in an environment variable, the secret key is never exposed
+              in the codebase.
+            </li>
+            <li>
+              The page uses simple navigation and semantic HTML for better
+              accessibility.
+            </li>
+          </ul>
         </section>
 
         <section>

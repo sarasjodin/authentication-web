@@ -8,7 +8,11 @@ const profileData = document.querySelector('#profile-data');
 const token = localStorage.getItem('token'); // Login saves token to localStorage
 
 if (!token) {
-  showMessage(profileMessage, 'You must log in to view this page.', 'info');
+  showMessage(
+    profileMessage,
+    'You must log in to view this section.',
+    'warning'
+  );
   profileData.innerHTML = `
     <p><a href="login.html">Go to login</a></p>
   `;
