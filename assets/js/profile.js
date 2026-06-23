@@ -1,3 +1,5 @@
+import { showMessage } from './ui.js';
+
 const API_URL = 'https://authentication.sarasjodin.se/api';
 
 const profileMessage = document.querySelector('#profile-message');
@@ -6,7 +8,7 @@ const profileData = document.querySelector('#profile-data');
 const token = localStorage.getItem('token'); // Login saves token to localStorage
 
 if (!token) {
-  profileMessage.textContent = 'You must log in to view this page.';
+  showMessage(profileMessage, 'You must log in to view this page.', 'info');
   profileData.innerHTML = `
     <p><a href="login.html">Go to login</a></p>
   `;
@@ -29,8 +31,7 @@ async function getProfile() {
     if (!response.ok) {
       localStorage.removeItem('token');
 
-      profileMessage.textContent =
-        data.message || 'You are not authorized to view this page.';
+      showMessage(profileMessage, data.message, 'error');
 
       profileData.innerHTML = `
         <p><a href="login.html">Log in again</a></p>
@@ -40,7 +41,7 @@ async function getProfile() {
     }
 
     // Display user info
-    profileMessage.textContent = data.message;
+    showMessage(profileMessage, data.message, 'success');
 
     profileData.innerHTML = `
       <p><strong>User ID:</strong> ${data.user.id}</p>
@@ -49,7 +50,7 @@ async function getProfile() {
     `;
   } catch (error) {
     console.error('Profile error:', error);
-    profileMessage.textContent = 'Could not connect to the server'; // Else error message
+    showMessage(profileMessage, 'Could not connect to the server', 'error'); // Else error message
     profileData.innerHTML = '';
   }
 }

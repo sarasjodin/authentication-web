@@ -1,3 +1,5 @@
+import { showMessage } from './ui.js';
+
 const API_URL = 'https://authentication.sarasjodin.se/api';
 
 const registerForm = document.querySelector('#register-form');
@@ -10,7 +12,7 @@ registerForm.addEventListener('submit', async (event) => {
   const email = document.querySelector('#email').value.trim();
   const password = document.querySelector('#password').value;
 
-  registerMessage.textContent = 'Creating account...';
+  showMessage(registerMessage, 'Creating account...', 'info');
 
   try {
     const response = await fetch(`${API_URL}/register`, {
@@ -28,15 +30,14 @@ registerForm.addEventListener('submit', async (event) => {
     const data = await response.json();
 
     if (!response.ok) {
-      registerMessage.textContent = data.message || 'Could not create account';
+      showMessage(registerMessage, data.message, 'error');
       return;
     }
 
-    registerMessage.textContent =
-      data.message || 'Account created successfully!';
+    showMessage(registerMessage, data.message, 'success');
     registerForm.reset();
   } catch (error) {
     console.error('Register error:', error);
-    registerMessage.textContent = 'Could not connect to the server';
+    showMessage(registerMessage, 'Could not connect to the server', 'error');
   }
 });

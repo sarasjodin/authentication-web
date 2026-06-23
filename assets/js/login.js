@@ -1,3 +1,5 @@
+import { showMessage } from './ui.js';
+
 const API_URL = 'https://authentication.sarasjodin.se/api';
 
 const loginForm = document.querySelector('#login-form');
@@ -8,7 +10,7 @@ loginForm.addEventListener('submit', async (event) => {
   const usernameInput = document.querySelector('#username').value.trim();
   const passwordInput = loginForm.querySelector('#password').value;
 
-  loginMessage.textContent = 'Logging in...';
+  showMessage(loginMessage, 'Logging in...', 'info');
 
   try {
     const response = await fetch(`${API_URL}/login`, {
@@ -25,7 +27,7 @@ loginForm.addEventListener('submit', async (event) => {
     const data = await response.json();
 
     if (!response.ok) {
-      loginMessage.textContent = data.message || 'Login failed';
+      showMessage(loginMessage, data.message || 'Login failed', 'error');
       return;
     }
 
@@ -33,7 +35,6 @@ loginForm.addEventListener('submit', async (event) => {
     loginForm.reset();
     window.location.href = 'profile.html'; // redirect to profile page after login
   } catch (error) {
-    console.error('Login error:', error);
-    loginMessage.textContent = 'Could not connect to the server';
+    showMessage(loginMessage, 'Could not connect to the server', 'error');
   }
 });
