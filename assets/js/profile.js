@@ -1,12 +1,16 @@
-import { showMessage } from './ui.js';
+import { showMessage } from './ui.js'; // Imports function that handles ui message
 
+// Base URL for the authentication API
 const API_URL = 'https://authentication.sarasjodin.se/api';
 
+// Variables for profile message and data
 const profileMessage = document.querySelector('#profile-message');
 const profileData = document.querySelector('#profile-data');
 
-const token = localStorage.getItem('token'); // Login saves token to localStorage
+// Get JWT token from local storage
+const token = localStorage.getItem('token'); // Login saved token to localStorage
 
+// Show message if the user is not logged in
 if (!token) {
   showMessage(
     profileMessage,
@@ -28,10 +32,11 @@ async function getProfile() {
         Authorization: `Bearer ${token}`
       }
     });
-    // fetches protected data from api/protected using the JWT token
 
+    // Convert response from JSON to JavaScript object
     const data = await response.json();
 
+    // Handle expired or invalid token
     if (!response.ok) {
       localStorage.removeItem('token');
 
@@ -44,7 +49,7 @@ async function getProfile() {
       return;
     }
 
-    // Display user info
+    // Show success message and user information
     showMessage(profileMessage, data.message, 'success');
 
     profileData.innerHTML = `
@@ -53,8 +58,8 @@ async function getProfile() {
       <p><strong>Account created:</strong> ${new Date(data.user.created).toLocaleString()}</p>
     `;
   } catch (error) {
-    console.error('Profile error:', error);
-    showMessage(profileMessage, 'Could not connect to the server', 'error'); // Else error message
+    // Show error message if the server cannot be reached
+    showMessage(profileMessage, 'Could not connect to the server', 'error');
     profileData.innerHTML = '';
   }
 }
